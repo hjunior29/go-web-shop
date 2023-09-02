@@ -1,11 +1,11 @@
 package models
 
 import (
-	"Web/db"
+	"go-web-shop/db"
 )
 
 type Produto struct {
-	Id         int     `gorm:"primaryKey"`
+	Id         int `gorm:"primaryKey"`
 	Nome       string
 	Descricao  string
 	Preco      float64

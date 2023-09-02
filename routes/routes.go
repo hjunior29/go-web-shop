@@ -1,8 +1,8 @@
 package routes
 
 import (
+	"go-web-shop/controllers"
 	"net/http"
-	"Web/controllers"
 )
 
 func CarregaRotas() {

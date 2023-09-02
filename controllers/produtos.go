@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"Web/models"
+	"go-web-shop/models"
 	"log"
 	"net/http"
 	"strconv"
@@ -15,11 +15,11 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "Index", produtos)
 }
 
-func New(w http.ResponseWriter, r *http.Request)  {
+func New(w http.ResponseWriter, r *http.Request) {
 	temp.ExecuteTemplate(w, "New", nil)
 }
 
-func Insert(w http.ResponseWriter, r *http.Request)  {
+func Insert(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		nome := r.FormValue("nome")
 		descricao := r.FormValue("descricao")
@@ -38,29 +38,29 @@ func Insert(w http.ResponseWriter, r *http.Request)  {
 
 		models.CriaNovoProduto(nome, descricao, precoConvertido, quantidadeConvertido)
 	}
-	http.Redirect(w,r, "/", 301)
+	http.Redirect(w, r, "/", 301)
 }
 
-func Delete(w http.ResponseWriter, r *http.Request)  {
+func Delete(w http.ResponseWriter, r *http.Request) {
 	idProduto := r.URL.Query().Get("id")
 	models.DeletaProduto(idProduto)
-	http.Redirect(w,r, "/", 301)
+	http.Redirect(w, r, "/", 301)
 }
 
-func Edit(w http.ResponseWriter, r *http.Request)  {
+func Edit(w http.ResponseWriter, r *http.Request) {
 	idProduto := r.URL.Query().Get("id")
 	produto := models.EditaProduto(idProduto)
 	temp.ExecuteTemplate(w, "Edit", produto)
 }
 
-func Update(w http.ResponseWriter, r *http.Request)  {
+func Update(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		id := r.FormValue("id")
 		nome := r.FormValue("nome")
 		descricao := r.FormValue("descricao")
 		preco := r.FormValue("preco")
 		quantidade := r.FormValue("quantidade")
-	
+
 		idConvertido, err := strconv.Atoi(id)
 		if err != nil {
 			log.Println(err)
@@ -75,5 +75,5 @@ func Update(w http.ResponseWriter, r *http.Request)  {
 		}
 		models.AtualizaProduto(idConvertido, nome, descricao, precoConvertido, quantidadeConvertido)
 	}
-	http.Redirect(w,r, "/", 301)
+	http.Redirect(w, r, "/", 301)
 }

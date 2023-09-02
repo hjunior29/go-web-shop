@@ -1,4 +1,4 @@
-module Web
+module go-web-shop
 
 go 1.20
 

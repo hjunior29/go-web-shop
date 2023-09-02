@@ -1,8 +1,8 @@
 package migrate
 
 import (
-	"Web/db"
-	"Web/models"
+	"go-web-shop/db"
+	"go-web-shop/models"
 	"log"
 )
 

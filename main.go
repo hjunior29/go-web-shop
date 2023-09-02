@@ -1,10 +1,10 @@
 package main
 
 import (
-	"Web/routes"
+	"go-web-shop/migrate"
+	"go-web-shop/routes"
 	"log"
 	"net/http"
-	"Web/migrate"
 
 	"github.com/joho/godotenv"
 )
